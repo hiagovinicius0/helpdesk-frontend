@@ -1,5 +1,5 @@
 interface IContainer {
-	children: JSX.Element;
+	children: JSX.Element[];
 }
 
 export const Container = ({ children }: IContainer): JSX.Element => {

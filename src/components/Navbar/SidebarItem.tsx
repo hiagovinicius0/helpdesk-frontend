@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ISidebarItens } from '../../utils/SidebarItems';
+import { ISidebarItens } from 'src/utils/SidebarItems';
 
 export const SidebarItem = ({ svg, title, to }: ISidebarItens): JSX.Element => {
 	return (
