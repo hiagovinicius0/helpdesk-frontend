@@ -7,14 +7,16 @@ import {
 } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { Home } from './screens/Home';
+import { SelectDepartment } from './screens/SelectDepartment';
 import { Login } from './screens/Login';
+import { CreateTicket } from './screens/CreateTicket';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
-			<Route path='/' element={<Home />} />
+			<Route path='/' element={<SelectDepartment />} />
 			<Route path='login' element={<Login />} />
+			<Route path='/tickets/select-department' element={<CreateTicket />} />
 		</>,
 	),
 );
