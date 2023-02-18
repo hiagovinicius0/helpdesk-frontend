@@ -11,7 +11,7 @@ export const FormContent = (): JSX.Element => {
 				<H4 title='Faça login para iniciar a sua sessão' />
 				<InputText icon={InputTextIcon.EMAIL} placeholder={'E-mail'} />
 				<InputText icon={InputTextIcon.PASSWORD} placeholder={'Senha'} />
-				<Button text={'entrar'} />
+				<Button text={'ENTRAR'} />
 			</form>
 		</div>
 	);

@@ -14,7 +14,8 @@ module.exports = {
 				'department-color': '#D9D9D9',
 				'link-color': '#0D40F5',
 				'background-gray-color': '#EFECEC',
-				'background-yellow-color': '#EEE6A0'
+				'background-yellow-color': '#EEE6A0',
+				'border-input-color': '#DCD4D4',
 			}
 		},
 	},
