@@ -1,7 +1,7 @@
 import { Button } from 'src/components/Button';
 import { H3 } from 'src/components/H3';
 import { H4 } from 'src/components/H4';
-import { InputText, InputTextIcon } from 'src/components/InputText';
+import { InputText, InputTextIcon } from './InputText';
 
 export const FormContent = (): JSX.Element => {
 	return (
