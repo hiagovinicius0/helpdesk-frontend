@@ -16,6 +16,11 @@ module.exports = {
 				'background-gray-color': '#EFECEC',
 				'background-yellow-color': '#EEE6A0',
 				'border-input-color': '#DCD4D4',
+				'white': '#ffffff',
+				'white-background-color': '#FDF8F8',
+				'gray-background-color': '#F1EFEF',
+				'card-color': '#F7F3F3',
+				'border-color': '#BFBBBB'
 			}
 		},
 	},

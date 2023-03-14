@@ -22,9 +22,7 @@ interface IInputs {
 
 export const Input = ({ span, type, selectOptions }: IInputs): JSX.Element => {
 	let input = (
-		<div className='flex space-x-6 m-2'>
-			<input className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color' />
-		</div>
+		<input className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color' />
 	);
 
 	if (type === InputType.TEXT) {

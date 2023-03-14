@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 interface ISpan {
-	text: string;
+	text: string | ReactNode;
 	className?: string;
 }
 
