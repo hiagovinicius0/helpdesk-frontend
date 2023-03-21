@@ -3,18 +3,19 @@ import { Span } from 'src/components/Span';
 import { Content } from 'src/screens/CreateTicket/Content';
 import { getPriority, TicketPriority } from './PriorityTicketEnum';
 import { getStatus, TicketStatus } from './StatusTicketEnum';
-import 'moment-timezone';
 import Moment from 'react-moment';
 import 'moment/locale/pt-br';
+import 'moment-timezone';
 
 interface ITicket {
 	createdAt: string;
 	priority: TicketPriority;
 	status: TicketStatus;
 	title: string;
+	showModal: () => void;
 }
 
-export const Ticket = ({ createdAt, priority, status, title }: ITicket): JSX.Element => {
+export const Ticket = ({ createdAt, priority, status, title, showModal }: ITicket): JSX.Element => {
 	const statusEnum = getStatus(status);
 	const priorityEnum = getPriority(priority);
 
@@ -34,7 +35,10 @@ export const Ticket = ({ createdAt, priority, status, title }: ITicket): JSX.Ele
 						/>
 					</div>
 					<div className='flex flex-row-reverse pt-6'>
-						<button className='bg-department-color border-2 border-inherit border-border-color shadow-md h-9 w-56 text-center'>
+						<button
+							className='bg-department-color border-2 border-inherit border-border-color shadow-md h-9 w-56 text-center'
+							onClick={showModal}
+						>
 							{statusEnum.text}
 						</button>
 						<div className={`h-8 w-8 ${priorityEnum.color} rounded-full mx-7`}></div>
