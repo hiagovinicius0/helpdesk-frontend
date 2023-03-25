@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import { Button } from 'src/components/Button';
 import { Input, InputType } from 'src/components/Inputs';
 
 export const Inputs = (): JSX.Element => {
+	const [subject, setSubject] = useState<string>('');
+	const [description, setDescription] = useState<string>('');
+	const [degree, setDegree] = useState<string>('');
+
 	const optionsSelect = [
 		{ value: '', text: 'Selecione' },
 		{ value: '1', text: 'Baixo' },
@@ -15,8 +20,13 @@ export const Inputs = (): JSX.Element => {
 
 	return (
 		<div>
-			<Input span='Assunto' type={InputType.TEXT} />
-			<Input span='Descrição' type={InputType.TEXTAREA} />
+			<Input span='Assunto' type={InputType.TEXT} value={subject} setValue={setSubject} />
+			<Input
+				span='Descrição'
+				type={InputType.TEXTAREA}
+				value={description}
+				setValue={setDescription}
+			/>
 			<Input
 				span='Grau de Necessidade'
 				type={InputType.SELECT}
@@ -24,6 +34,8 @@ export const Inputs = (): JSX.Element => {
 					defaultValue: '',
 					options: optionsSelect,
 				}}
+				value={degree}
+				setValue={setDegree}
 			/>
 			<div className='flex justify-center pt-3'>
 				<Button text='Abrir Chamado' onClick={onClick} />

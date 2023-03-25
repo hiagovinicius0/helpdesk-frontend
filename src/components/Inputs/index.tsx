@@ -18,17 +18,27 @@ interface IInputs {
 	span: string;
 	type: InputType;
 	selectOptions?: ISelectOptions;
+	value: string;
+	setValue: (text: string) => void;
 }
 
-export const Input = ({ span, type, selectOptions }: IInputs): JSX.Element => {
+export const Input = ({ span, type, selectOptions, value, setValue }: IInputs): JSX.Element => {
 	let input = (
-		<input className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color' />
+		<input
+			className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color'
+			value={value}
+			onChange={(event): void => setValue(event.target.value)}
+		/>
 	);
 
 	if (type === InputType.TEXT) {
 		input = (
 			<>
-				<input className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color' />
+				<input
+					className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color'
+					value={value}
+					onChange={(event): void => setValue(event.target.value)}
+				/>
 			</>
 		);
 	}
@@ -36,7 +46,11 @@ export const Input = ({ span, type, selectOptions }: IInputs): JSX.Element => {
 	if (type === InputType.TEXTAREA) {
 		input = (
 			<>
-				<textarea className='w-72 sm:w-80 md:w-96 bg-white-color h-40 resize-none border border-border-input-color'></textarea>
+				<textarea
+					className='w-72 sm:w-80 md:w-96 bg-white-color h-40 resize-none border border-border-input-color'
+					value={value}
+					onChange={(event): void => setValue(event.target.value)}
+				></textarea>
 			</>
 		);
 	}
@@ -47,6 +61,8 @@ export const Input = ({ span, type, selectOptions }: IInputs): JSX.Element => {
 			<select
 				className='w-72 sm:w-80 md:w-96 bg-white-color resize-none border border-border-input-color'
 				defaultValue={selectOp.defaultValue}
+				value={value}
+				onChange={(event): void => setValue(event.target.value)}
 			>
 				{selectOp.options.map((option, index) => {
 					return (
