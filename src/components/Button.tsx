@@ -1,9 +1,10 @@
 interface IButton {
 	text: string;
 	style?: string;
+	onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export const Button = ({ text, style }: IButton): JSX.Element => {
+export const Button = ({ text, style, onClick }: IButton): JSX.Element => {
 	return (
 		<button
 			type='submit'
@@ -16,6 +17,7 @@ export const Button = ({ text, style }: IButton): JSX.Element => {
 				`}
 			data-mdb-ripple='true'
 			data-mdb-ripple-color='light'
+			onClick={(event): void => onClick(event)}
 		>
 			{text}
 		</button>

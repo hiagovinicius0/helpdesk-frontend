@@ -16,7 +16,6 @@ export const userReducer = (state = initialState, action: UserAction): UserStore
 				id: action.payload.id,
 				name: action.payload.name,
 				accessToken: action.payload.accessToken,
-				refreshToken: action.payload.refreshToken,
 			};
 
 		case USER_LOGGED_OUT:
@@ -24,7 +23,6 @@ export const userReducer = (state = initialState, action: UserAction): UserStore
 				id: null,
 				name: null,
 				accessToken: null,
-				refreshToken: null,
 			};
 
 		default:

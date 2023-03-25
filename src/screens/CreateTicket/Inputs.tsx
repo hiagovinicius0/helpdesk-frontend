@@ -9,6 +9,10 @@ export const Inputs = (): JSX.Element => {
 		{ value: '3', text: 'Alto' },
 	];
 
+	const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+		event.preventDefault();
+	};
+
 	return (
 		<div>
 			<Input span='Assunto' type={InputType.TEXT} />
@@ -22,7 +26,7 @@ export const Inputs = (): JSX.Element => {
 				}}
 			/>
 			<div className='flex justify-center pt-3'>
-				<Button text='Abrir Chamado' />
+				<Button text='Abrir Chamado' onClick={onClick} />
 			</div>
 		</div>
 	);

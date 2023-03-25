@@ -1,14 +1,19 @@
 import { Modal } from 'flowbite-react';
 import { useState } from 'react';
+import { ConnectedProps } from 'react-redux';
 import { HistoryNavigation } from 'src/components/HistoryNavigation';
 import { Navbar } from 'src/components/Navbar';
 import { getRoutes, Screen } from 'src/routes/RoutesEnum';
+import { connector } from 'src/store/store-config';
 import { TicketItems } from 'src/utils/Tickets';
 import { Container } from '../SelectDepartment/Container';
 import { ModalView } from './components/Modal';
 import { Ticket } from './components/Ticket';
 
-export const Tickets = (): JSX.Element => {
+type PropsFromRedux = ConnectedProps<typeof connector>;
+export type ITickets = PropsFromRedux;
+
+const TicketsScreen = ({ user }: ITickets): JSX.Element => {
 	const history = [getRoutes(Screen.HOME).name, getRoutes(Screen.TICKETS).name];
 	const [show, setShow] = useState<boolean>(false);
 
@@ -18,7 +23,7 @@ export const Tickets = (): JSX.Element => {
 
 	return (
 		<>
-			<Navbar>
+			<Navbar user={user}>
 				<>
 					<HistoryNavigation history={history} />
 					{TicketItems.map((item, index) => {
@@ -36,3 +41,5 @@ export const Tickets = (): JSX.Element => {
 		</>
 	);
 };
+
+export const Tickets = connector(TicketsScreen);

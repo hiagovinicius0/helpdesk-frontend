@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import { userReducer } from './reducers/user.reducer';
 import { ConfigStoreResponse, StateTypes } from './state-types';
 import localStorage from 'redux-persist/es/storage';
+import { UserStore } from './stores';
+import { login, logout } from './actions/user.action';
+import { ActionResponse, ActionResponseVoid } from './types';
 
 const reducers = combineReducers({
 	user: userReducer,
@@ -19,22 +22,25 @@ export const store = configureStore({
 export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
+
 export type AppDispatch = typeof store.dispatch;
 
 export const mapState = (state: RootState): StateTypes => ({
 	user: state.user,
 });
 
-export const mapDispatch = {};
+export const mapDispatch = {
+	// user
+	onLogin: (user: UserStore): ActionResponse<UserStore> => login(user),
+	onLogout: (): ActionResponseVoid => logout(),
+};
 
 export default function configStore(): ConfigStoreResponse {
 	const persistConfig = {
 		key: 'HELPDESK',
 		storage: localStorage,
 	};
-
 	const persistedReducer = persistReducer(persistConfig, reducers);
-
 	const store = createStore(persistedReducer);
 	const persistor = persistStore(store);
 

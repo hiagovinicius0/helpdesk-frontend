@@ -4,6 +4,7 @@ export enum Screen {
 	LOGIN,
 	SELECT_DEPARTMENT,
 	TICKETS,
+	LOGOUT,
 }
 interface Route {
 	link: string;
@@ -22,5 +23,7 @@ export const getRoutes = (screen: Screen): Route => {
 			return { link: '/tickets/select-department', name: 'Selecionar Departamento' };
 		case Screen.TICKETS:
 			return { link: '/tickets', name: 'Tickets' };
+		case Screen.LOGOUT:
+			return { link: '/logout', name: 'Sair' };
 	}
 };

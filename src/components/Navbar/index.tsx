@@ -1,14 +1,18 @@
 import { List, UserCircle } from 'phosphor-react';
 import { Span } from 'src/components/Span';
+import { UserStore } from 'src/store/stores';
+import { Authentication } from '../Authentication';
 import { SidebarItems } from './SidebarItems';
 
 interface INavbar {
 	children: JSX.Element;
+	user: UserStore;
 }
 
-export const Navbar = ({ children }: INavbar): JSX.Element => {
+export const Navbar = ({ children, user }: INavbar): JSX.Element => {
 	return (
 		<>
+			<Authentication user={user} />
 			<nav className='fixed top-0 z-50 w-full bg-primary-color h-20 px-3 py-3 lg:px-5 lg:pl-3'>
 				<div className='flex items-center justify-between'>
 					<div className='flex items-center justify-start'>
