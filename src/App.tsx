@@ -23,7 +23,6 @@ export const App = (): JSX.Element => {
 				<Route path={getRoutes(Screen.LOGIN).link} element={<Login />} />
 				<Route path={getRoutes(Screen.HOME).link} element={<Tickets />} />
 				<Route path={getRoutes(Screen.SELECT_DEPARTMENT).link} element={<SelectDepartment />} />
-
 				<Route path={getRoutes(Screen.CREATE_TICKET).link} element={<CreateTicket />} />
 				<Route path={getRoutes(Screen.TICKETS).link} element={<Tickets />} />
 				<Route path={getRoutes(Screen.LOGOUT).link} element={<Logout />} />

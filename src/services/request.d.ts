@@ -24,3 +24,14 @@ export interface BodyPatchModifyTicket extends AccessTokenRequest {
 	ultimoStatus?: TicketStatus;
 	id: string;
 }
+
+export interface BodyCreateTicket extends AccessTokenRequest {
+	titulo: string;
+	departamentoResponsavel: number;
+	prioridade: TicketPriority;
+	descricao: string;
+}
+
+export interface QueryDepartmentRequest extends AccessTokenRequest {
+	departmentId: number;
+}

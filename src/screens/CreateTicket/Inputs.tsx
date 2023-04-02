@@ -1,8 +1,19 @@
 import { useState } from 'react';
 import { Button } from 'src/components/Button';
 import { Input, InputType } from 'src/components/Inputs';
+import { DepartamentResponse } from 'src/services/response';
+import { ticketService } from 'src/services/ticket-service';
+import { UserStore } from 'src/store/stores';
+import { TicketPriority } from '../Tickets/components/PriorityTicketEnum';
+import { useNavigate } from 'react-router-dom';
+import { Screen, getRoutes } from 'src/routes/RoutesEnum';
 
-export const Inputs = (): JSX.Element => {
+interface IInputs {
+	department: DepartamentResponse | null;
+	user: UserStore;
+}
+
+export const Inputs = ({ department, user }: IInputs): JSX.Element => {
 	const [subject, setSubject] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
 	const [degree, setDegree] = useState<string>('');
@@ -14,8 +25,26 @@ export const Inputs = (): JSX.Element => {
 		{ value: '3', text: 'Alto' },
 	];
 
+	const navigate = useNavigate();
+
 	const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
 		event.preventDefault();
+
+		if (subject.length === 0 || description.length === 0) {
+			alert('Preencha todos os campos!');
+		}
+
+		ticketService
+			.createTicket({
+				accessToken: user.accessToken as string,
+				departamentoResponsavel: department?.id as number,
+				descricao: description,
+				prioridade: parseInt(degree) as unknown as TicketPriority,
+				titulo: subject,
+			})
+			.then(() => {
+				navigate(getRoutes(Screen.TICKETS).link);
+			});
 	};
 
 	return (

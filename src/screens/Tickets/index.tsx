@@ -1,4 +1,4 @@
-import { Modal } from 'flowbite-react';
+import { Button, Modal } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { ConnectedProps } from 'react-redux';
 import { HistoryNavigation } from 'src/components/HistoryNavigation';
@@ -10,12 +10,13 @@ import { connector } from 'src/store/store-config';
 import { Container } from '../SelectDepartment/Container';
 import { ModalView } from './components/Modal';
 import { Ticket } from './components/Ticket';
+import { Link } from 'react-router-dom';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 export type ITickets = PropsFromRedux;
 
 const TicketsScreen = ({ user }: ITickets): JSX.Element => {
-	const history = [getRoutes(Screen.HOME).name, getRoutes(Screen.TICKETS).name];
+	const history = [getRoutes(Screen.HOME), getRoutes(Screen.TICKETS)];
 	const [show, setShow] = useState<boolean>(false);
 	const [tickets, setTickets] = useState<TicketResponse[]>([]);
 	const [ticketModalHistory, setTicketModalHistory] = useState<TicketHistoryResponse[]>([]);
@@ -70,6 +71,11 @@ const TicketsScreen = ({ user }: ITickets): JSX.Element => {
 			<Navbar user={user}>
 				<>
 					<HistoryNavigation history={history} />
+					<div className='flex flex-row-reverse'>
+						<Link to={getRoutes(Screen.SELECT_DEPARTMENT).link}>
+							<Button>Abrir Chamado</Button>
+						</Link>
+					</div>
 					{tickets.map((item, index) => {
 						return (
 							<Container key={index}>

@@ -17,7 +17,7 @@ export interface DepartamentResponse {
 	id: number;
 	ativo: boolean;
 	nome: string;
-	email: string;
+	icone: string;
 }
 
 export interface TicketResponse {

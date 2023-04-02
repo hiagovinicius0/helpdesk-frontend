@@ -6,24 +6,45 @@ export enum Screen {
 	TICKETS,
 	LOGOUT,
 }
-interface Route {
+export interface RouteScreen {
 	link: string;
 	name: string;
+	screen: number;
 }
 
-export const getRoutes = (screen: Screen): Route => {
-	switch (screen) {
-		case Screen.HOME:
-			return { link: '/', name: 'Início' };
-		case Screen.CREATE_TICKET:
-			return { link: '/tickets/create', name: 'Criar Chamado' };
-		case Screen.LOGIN:
-			return { link: '/login', name: 'Login' };
-		case Screen.SELECT_DEPARTMENT:
-			return { link: '/tickets/select-department', name: 'Selecionar Departamento' };
-		case Screen.TICKETS:
-			return { link: '/tickets', name: 'Tickets' };
-		case Screen.LOGOUT:
-			return { link: '/logout', name: 'Sair' };
-	}
+const routes = [
+	{
+		screen: Screen.HOME,
+		link: '/',
+		name: 'Início',
+	},
+	{
+		screen: Screen.CREATE_TICKET,
+		link: '/tickets/create',
+		name: 'Criar Chamado',
+	},
+	{
+		screen: Screen.LOGIN,
+		link: '/login',
+		name: 'Login',
+	},
+	{
+		screen: Screen.SELECT_DEPARTMENT,
+		link: '/tickets/select-department',
+		name: 'Selecionar Departamento',
+	},
+	{
+		screen: Screen.TICKETS,
+		link: '/tickets',
+		name: 'Tickets',
+	},
+	{
+		screen: Screen.LOGOUT,
+		link: '/',
+		name: 'Sair',
+	},
+];
+
+export const getRoutes = (screen: Screen): RouteScreen => {
+	return routes.find((route) => route.screen === screen) as RouteScreen;
 };

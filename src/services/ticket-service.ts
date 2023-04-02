@@ -1,5 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
-import { AccessTokenRequest, BodyPatchModifyTicket, QueryTicketRequest } from './request';
+import {
+	AccessTokenRequest,
+	BodyCreateTicket,
+	BodyPatchModifyTicket,
+	QueryTicketRequest,
+} from './request';
 import { TicketHistoryResponse, TicketResponse } from './response';
 
 class TicketService {
@@ -52,6 +57,34 @@ class TicketService {
 				},
 				{
 					headers: { Authorization: `Bearer ${bodyPatchModifyTicket.accessToken}` },
+				},
+			)
+			.then((response) => {
+				return Promise.resolve(response);
+			})
+			.catch((error) => {
+				return Promise.reject(error);
+			});
+	}
+
+	async createTicket({
+		accessToken,
+		departamentoResponsavel,
+		descricao,
+		prioridade,
+		titulo,
+	}: BodyCreateTicket): Promise<AxiosResponse<TicketResponse>> {
+		return this.axios
+			.post<TicketResponse>(
+				'/chamados',
+				{
+					departamentoResponsavel,
+					descricao,
+					prioridade,
+					titulo,
+				},
+				{
+					headers: { Authorization: `Bearer ${accessToken}` },
 				},
 			)
 			.then((response) => {

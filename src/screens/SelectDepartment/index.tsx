@@ -15,7 +15,7 @@ const SelectDepartmentScreen = ({ user }: ISelectDepartment): JSX.Element => {
 				<Container>
 					<H3 title='Selecione o departamento do seu chamado' />
 				</Container>
-				<Departments />
+				<Departments user={user} />
 			</>
 		</Navbar>
 	);
