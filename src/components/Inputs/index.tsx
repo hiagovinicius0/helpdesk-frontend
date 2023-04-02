@@ -10,7 +10,6 @@ interface IOption {
 }
 
 interface ISelectOptions {
-	defaultValue: string;
 	options: IOption[];
 }
 
@@ -25,7 +24,7 @@ interface IInputs {
 export const Input = ({ span, type, selectOptions, value, setValue }: IInputs): JSX.Element => {
 	let input = (
 		<input
-			className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color'
+			className='max-w-288 w-full md:w-96 bg-white-color border border-border-input-color'
 			value={value}
 			onChange={(event): void => setValue(event.target.value)}
 		/>
@@ -35,7 +34,7 @@ export const Input = ({ span, type, selectOptions, value, setValue }: IInputs): 
 		input = (
 			<>
 				<input
-					className='w-72 sm:w-80 md:w-96 bg-white-color border border-border-input-color'
+					className='max-w-288 w-full md:w-96 bg-white-color border border-border-input-color'
 					value={value}
 					onChange={(event): void => setValue(event.target.value)}
 				/>
@@ -47,7 +46,7 @@ export const Input = ({ span, type, selectOptions, value, setValue }: IInputs): 
 		input = (
 			<>
 				<textarea
-					className='w-72 sm:w-80 md:w-96 bg-white-color h-40 resize-none border border-border-input-color'
+					className='max-w-288 w-full sm:w-80 md:w-96 bg-white-color h-40 resize-none border border-border-input-color'
 					value={value}
 					onChange={(event): void => setValue(event.target.value)}
 				></textarea>
@@ -59,10 +58,11 @@ export const Input = ({ span, type, selectOptions, value, setValue }: IInputs): 
 		const selectOp = selectOptions as ISelectOptions;
 		input = (
 			<select
-				className='w-72 sm:w-80 md:w-96 bg-white-color resize-none border border-border-input-color'
-				defaultValue={selectOp.defaultValue}
+				className='max-w-288 w-full md:w-96 bg-white-color resize-none border border-border-input-color'
 				value={value}
-				onChange={(event): void => setValue(event.target.value)}
+				onChange={(event): void => {
+					setValue(event.target.value);
+				}}
 			>
 				{selectOp.options.map((option, index) => {
 					return (

@@ -31,7 +31,6 @@ export const Inputs = (): JSX.Element => {
 				span='Grau de Necessidade'
 				type={InputType.SELECT}
 				selectOptions={{
-					defaultValue: '',
 					options: optionsSelect,
 				}}
 				value={degree}

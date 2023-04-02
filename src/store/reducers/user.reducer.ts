@@ -7,6 +7,8 @@ const initialState = {
 	name: null,
 	accessToken: null,
 	refreshToken: null,
+	role: null,
+	department: null,
 } as unknown as UserStore;
 
 export const userReducer = (state = initialState, action: UserAction): UserStore => {
@@ -16,6 +18,8 @@ export const userReducer = (state = initialState, action: UserAction): UserStore
 				id: action.payload.id,
 				name: action.payload.name,
 				accessToken: action.payload.accessToken,
+				role: action.payload.role,
+				department: action.payload.department,
 			};
 
 		case USER_LOGGED_OUT:
@@ -23,6 +27,8 @@ export const userReducer = (state = initialState, action: UserAction): UserStore
 				id: null,
 				name: null,
 				accessToken: null,
+				department: null,
+				role: null,
 			};
 
 		default:

@@ -20,6 +20,12 @@ const TicketsScreen = ({ user }: ITickets): JSX.Element => {
 	const [tickets, setTickets] = useState<TicketResponse[]>([]);
 	const [ticketModalHistory, setTicketModalHistory] = useState<TicketHistoryResponse[]>([]);
 	const [ticketModal, setTicketModal] = useState<TicketResponse | null>(null);
+	const [responseVisible, setResponseVisible] = useState<boolean>(false);
+	const [response, setResponse] = useState<string>('');
+	const [statusVisible, setStatusVisible] = useState<boolean>(false);
+	const [status, setStatus] = useState<string>('');
+	const [priorityVisible, setPriorityVisible] = useState<boolean>(false);
+	const [priority, setPriority] = useState<string>('');
 
 	const showModal = (ticketId: string): void => {
 		getTicket(ticketId);
@@ -45,6 +51,16 @@ const TicketsScreen = ({ user }: ITickets): JSX.Element => {
 			});
 	};
 
+	const onClose = (): void => {
+		setShow(false);
+		setResponseVisible(false);
+		setStatusVisible(false);
+		setResponse('');
+		setStatus('');
+		setPriorityVisible(false);
+		setPriority('');
+	};
+
 	useEffect(() => {
 		getTickets();
 	}, []);
@@ -63,12 +79,24 @@ const TicketsScreen = ({ user }: ITickets): JSX.Element => {
 					})}
 				</>
 			</Navbar>
-			<Modal show={show} onClose={(): void => setShow(false)} size='5xl'>
+			<Modal show={show} onClose={(): void => onClose()} size='5xl'>
 				<ModalView
 					ticketModalHistory={ticketModalHistory}
 					user={user}
 					ticketModal={ticketModal}
 					getTicket={getTicket}
+					responseVisible={responseVisible}
+					setResponseVisible={setResponseVisible}
+					response={response}
+					setResponse={setResponse}
+					statusVisible={statusVisible}
+					setStatusVisible={setStatusVisible}
+					status={status}
+					setStatus={setStatus}
+					priority={priority}
+					setPriority={setPriority}
+					priorityVisible={priorityVisible}
+					setPriorityVisible={setPriorityVisible}
 				/>
 			</Modal>
 		</>

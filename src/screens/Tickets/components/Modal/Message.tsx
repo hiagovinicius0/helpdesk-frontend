@@ -8,8 +8,6 @@ interface IMessage extends MessageResponse {
 }
 
 export const Message = ({ usuario, descricao, horario, userIdLogged }: IMessage): JSX.Element => {
-	console.log(usuario.id, userIdLogged);
-
 	return (
 		<div
 			className={

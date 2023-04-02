@@ -14,7 +14,7 @@ export interface UserResponse {
 }
 
 export interface DepartamentResponse {
-	id: string;
+	id: number;
 	ativo: boolean;
 	nome: string;
 	email: string;

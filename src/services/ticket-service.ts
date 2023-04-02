@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { AccessTokenRequest, QueryTicketRequest } from './request';
+import { AccessTokenRequest, BodyPatchModifyTicket, QueryTicketRequest } from './request';
 import { TicketHistoryResponse, TicketResponse } from './response';
 
 class TicketService {
@@ -32,6 +32,28 @@ class TicketService {
 			.get<TicketHistoryResponse[]>(`/chamados/${queryTicketsRequest.ticketId}/historico`, {
 				headers: { Authorization: `Bearer ${queryTicketsRequest.accessToken}` },
 			})
+			.then((response) => {
+				return Promise.resolve(response);
+			})
+			.catch((error) => {
+				return Promise.reject(error);
+			});
+	}
+
+	async modifyTicket(
+		bodyPatchModifyTicket: BodyPatchModifyTicket,
+	): Promise<AxiosResponse<TicketResponse>> {
+		return this.axios
+			.patch<TicketResponse>(
+				`/chamados/${bodyPatchModifyTicket.id}`,
+				{
+					prioridade: bodyPatchModifyTicket.prioridade,
+					ultimoStatus: bodyPatchModifyTicket.ultimoStatus,
+				},
+				{
+					headers: { Authorization: `Bearer ${bodyPatchModifyTicket.accessToken}` },
+				},
+			)
 			.then((response) => {
 				return Promise.resolve(response);
 			})

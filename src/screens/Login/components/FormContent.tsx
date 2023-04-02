@@ -56,6 +56,8 @@ export const FormContent = ({ onLogin }: IFormContent): JSX.Element => {
 					id: response.data.usuario.id,
 					accessToken: response.data.accessToken,
 					name: response.data.usuario.nome,
+					role: response.data.usuario.funcao,
+					department: response.data.usuario.departamento.id,
 				});
 				navigate('/');
 			})

@@ -19,6 +19,7 @@ export const Ticket = ({
 	titulo,
 	showModal,
 	id,
+	ordem,
 }: ITicket): JSX.Element => {
 	const statusEnum = getStatus(ultimoStatus);
 	const priorityEnum = getPriority(prioridade);
@@ -28,7 +29,7 @@ export const Ticket = ({
 			<div className='bg-white p-1 sm:p-2'>
 				<div className='bg-card-color m-1 p-5 flex flex-col sm:flex-row m-4 p-5'>
 					<div className='basis-3/4'>
-						<H3 title={titulo} />
+						<H3 title={`#${ordem} - ${titulo}`} />
 						<Span
 							text={
 								<Moment format='LLLL' tz='America/Sao_Paulo'>
