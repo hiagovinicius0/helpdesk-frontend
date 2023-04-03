@@ -1,21 +1,17 @@
 import { Button, Modal } from 'flowbite-react';
 import { useEffect, useState } from 'react';
-import { ConnectedProps } from 'react-redux';
 import { HistoryNavigation } from 'src/components/HistoryNavigation';
 import { Navbar } from 'src/components/Navbar';
 import { getRoutes, Screen } from 'src/routes/RoutesEnum';
 import { TicketHistoryResponse, TicketResponse } from 'src/services/response';
 import { ticketService } from 'src/services/ticket-service';
-import { connector } from 'src/store/store-config';
-import { Container } from '../SelectDepartment/Container';
+import { PropsFromRedux, connector } from 'src/store/store-config';
 import { ModalView } from './components/Modal';
 import { Ticket } from './components/Ticket';
 import { Link } from 'react-router-dom';
+import { Container } from '../SelectDepartment/components/Container';
 
-type PropsFromRedux = ConnectedProps<typeof connector>;
-export type ITickets = PropsFromRedux;
-
-const TicketsScreen = ({ user }: ITickets): JSX.Element => {
+const TicketsScreen = ({ user }: PropsFromRedux): JSX.Element => {
 	const history = [getRoutes(Screen.HOME), getRoutes(Screen.TICKETS)];
 	const [show, setShow] = useState<boolean>(false);
 	const [tickets, setTickets] = useState<TicketResponse[]>([]);

@@ -13,6 +13,7 @@ import { SelectDepartment } from './screens/SelectDepartment';
 import { Login } from './screens/Login';
 import { CreateTicket } from './screens/CreateTicket';
 import { Logout } from './screens/Logout';
+import { Departments } from './screens/Departments';
 
 export const App = (): JSX.Element => {
 	const { store, persistor } = configStore();
@@ -26,6 +27,7 @@ export const App = (): JSX.Element => {
 				<Route path={getRoutes(Screen.CREATE_TICKET).link} element={<CreateTicket />} />
 				<Route path={getRoutes(Screen.TICKETS).link} element={<Tickets />} />
 				<Route path={getRoutes(Screen.LOGOUT).link} element={<Logout />} />
+				<Route path={getRoutes(Screen.DEPARTMENTS).link} element={<Departments />} />
 			</>,
 		),
 	);

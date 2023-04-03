@@ -5,6 +5,7 @@ export enum Screen {
 	SELECT_DEPARTMENT,
 	TICKETS,
 	LOGOUT,
+	DEPARTMENTS,
 }
 export interface RouteScreen {
 	link: string;
@@ -42,6 +43,11 @@ const routes = [
 		screen: Screen.LOGOUT,
 		link: '/logout',
 		name: 'Sair',
+	},
+	{
+		screen: Screen.DEPARTMENTS,
+		link: '/departments',
+		name: 'Departamentos',
 	},
 ];
 

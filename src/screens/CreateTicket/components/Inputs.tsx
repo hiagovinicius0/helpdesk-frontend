@@ -4,9 +4,9 @@ import { Input, InputType } from 'src/components/Inputs';
 import { DepartamentResponse } from 'src/services/response';
 import { ticketService } from 'src/services/ticket-service';
 import { UserStore } from 'src/store/stores';
-import { TicketPriority } from '../Tickets/components/PriorityTicketEnum';
 import { useNavigate } from 'react-router-dom';
 import { Screen, getRoutes } from 'src/routes/RoutesEnum';
+import { TicketPriority } from 'src/screens/Tickets/components/PriorityTicketEnum';
 
 interface IInputs {
 	department: DepartamentResponse | null;

@@ -1,12 +1,12 @@
 import { H3 } from 'src/components/H3';
 import { Span } from 'src/components/Span';
-import { Content } from 'src/screens/CreateTicket/Content';
 import { getPriority } from './PriorityTicketEnum';
 import { getStatus } from './StatusTicketEnum';
 import Moment from 'react-moment';
 import 'moment/locale/pt-br';
 import 'moment-timezone';
 import { TicketResponse } from 'src/services/response';
+import { Content } from 'src/screens/CreateTicket/components/Content';
 
 interface ITicket extends TicketResponse {
 	showModal: (ticketId: string) => void;

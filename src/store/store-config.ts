@@ -2,7 +2,7 @@ import { combineReducers, legacy_createStore as createStore } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
-import { connect } from 'react-redux';
+import { ConnectedProps, connect } from 'react-redux';
 import { userReducer } from './reducers/user.reducer';
 import { ConfigStoreResponse, StateTypes } from './state-types';
 import localStorage from 'redux-persist/es/storage';
@@ -48,3 +48,5 @@ export default function configStore(): ConfigStoreResponse {
 }
 
 export const connector = connect(mapState, mapDispatch);
+
+export type PropsFromRedux = ConnectedProps<typeof connector>;

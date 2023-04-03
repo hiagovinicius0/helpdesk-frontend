@@ -1,21 +1,17 @@
-import { ConnectedProps } from 'react-redux';
 import { HistoryNavigation } from 'src/components/HistoryNavigation';
 import { Navbar } from 'src/components/Navbar';
 import { getRoutes, Screen } from 'src/routes/RoutesEnum';
-import { connector } from 'src/store/store-config';
-import { Container } from '../SelectDepartment/Container';
-import { ContainerTitle } from './ContainerTitle';
-import { Content } from './Content';
-import { Inputs } from './Inputs';
+import { connector, PropsFromRedux } from 'src/store/store-config';
+import { Container } from '../SelectDepartment/components/Container';
+import { ContainerTitle } from './components/ContainerTitle';
 import { departmentService } from 'src/services/department-service';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { DepartamentResponse } from 'src/services/response';
+import { Content } from './components/Content';
+import { Inputs } from './components/Inputs';
 
-type PropsFromRedux = ConnectedProps<typeof connector>;
-export type ICreateTicket = PropsFromRedux;
-
-const CreateTicketScreen = ({ user }: ICreateTicket): JSX.Element => {
+const CreateTicketScreen = ({ user }: PropsFromRedux): JSX.Element => {
 	const { search } = useLocation();
 	const [department, setDepartment] = useState<DepartamentResponse | null>(null);
 	const navigate = useNavigate();

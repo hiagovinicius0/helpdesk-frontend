@@ -36,7 +36,7 @@ export const Navbar = ({ children, user }: INavbar): JSX.Element => {
 							aria-expanded='false'
 							data-dropdown-placement='bottom'
 						>
-							<Span text='id 333' className='pr-2 font-bold' />
+							<Span text={`${user.name}`} className='pr-2 font-bold' />
 							<UserCircle className='w-10 h-10 mt-1 text-white' weight='fill' />
 						</button>
 					</div>

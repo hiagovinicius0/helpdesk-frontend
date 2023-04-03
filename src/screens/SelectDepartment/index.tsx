@@ -1,14 +1,10 @@
 import { H3 } from 'src/components/H3';
 import { Navbar } from 'src/components/Navbar';
-import { Departments } from './Departments';
-import { Container } from './Container';
-import { ConnectedProps } from 'react-redux';
-import { connector } from 'src/store/store-config';
+import { Container } from './components/Container';
+import { PropsFromRedux, connector } from 'src/store/store-config';
+import { Departments } from './components/Departments';
 
-type PropsFromRedux = ConnectedProps<typeof connector>;
-export type ISelectDepartment = PropsFromRedux;
-
-const SelectDepartmentScreen = ({ user }: ISelectDepartment): JSX.Element => {
+const SelectDepartmentScreen = ({ user }: PropsFromRedux): JSX.Element => {
 	return (
 		<Navbar user={user}>
 			<>
