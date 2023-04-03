@@ -1,7 +1,12 @@
 import { SidebarItemsMock } from 'src/utils/SidebarItems';
 import { SidebarItem } from './SidebarItem';
+import { UserStore } from 'src/store/stores';
 
-export const SidebarItems = (): JSX.Element => {
+interface ISidebarItems {
+	user: UserStore;
+}
+
+export const SidebarItems = ({ user }: ISidebarItems): JSX.Element => {
 	return (
 		<aside
 			id='logo-sidebar'
@@ -11,7 +16,8 @@ export const SidebarItems = (): JSX.Element => {
 			<div className='h-full px-3 pb-4 overflow-y-auto bg-primary-color text-white-color'>
 				<ul className='space-y-2'>
 					{SidebarItemsMock.map((item, index) => {
-						return <SidebarItem {...item} key={index} />;
+						if (!item.onlyAdmin || (item.onlyAdmin && user.role === 1))
+							return <SidebarItem {...item} key={index} />;
 					})}
 				</ul>
 			</div>

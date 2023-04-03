@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userService } from 'src/services/user-service';
 import { UserStore } from 'src/store/stores';
 
 interface AuthenticationProps {
@@ -11,8 +12,14 @@ export const Authentication = ({ user }: AuthenticationProps): JSX.Element => {
 
 	const verifyUser = (): void => {
 		if (user.id === null || user.name === null || user.accessToken === null) {
-			navigate('/login');
+			navigate('/logout');
+
+			return;
 		}
+
+		userService.status({ accessToken: user.accessToken }).catch(() => {
+			navigate('/logout');
+		});
 	};
 
 	useEffect(() => {

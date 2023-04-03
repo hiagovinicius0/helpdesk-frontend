@@ -42,7 +42,7 @@ export const Navbar = ({ children, user }: INavbar): JSX.Element => {
 					</div>
 				</div>
 			</nav>
-			<SidebarItems />
+			<SidebarItems user={user} />
 
 			<div className='p-4 sm:ml-64 mt-16 pt-5'>{children}</div>
 		</>

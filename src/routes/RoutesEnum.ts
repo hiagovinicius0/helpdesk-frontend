@@ -40,7 +40,7 @@ const routes = [
 	},
 	{
 		screen: Screen.LOGOUT,
-		link: '/',
+		link: '/logout',
 		name: 'Sair',
 	},
 ];

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { BodyLoginRequest } from './request';
+import { AccessTokenRequest, BodyLoginRequest, StatusResponse } from './request';
 import { LoginResponse } from './response';
 
 class UserService {
@@ -9,6 +9,19 @@ class UserService {
 			'Content-type': 'application/json',
 		},
 	});
+
+	async status(accessTokenRequest: AccessTokenRequest): Promise<AxiosResponse<StatusResponse>> {
+		return this.axios
+			.get<StatusResponse>('/auth/status', {
+				headers: { Authorization: `Bearer ${accessTokenRequest.accessToken}` },
+			})
+			.then((response) => {
+				return Promise.resolve(response);
+			})
+			.catch((error) => {
+				return Promise.reject(error);
+			});
+	}
 
 	async login(bodyLogin: BodyLoginRequest): Promise<AxiosResponse<LoginResponse>> {
 		return this.axios

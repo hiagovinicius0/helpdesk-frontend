@@ -35,3 +35,7 @@ export interface BodyCreateTicket extends AccessTokenRequest {
 export interface QueryDepartmentRequest extends AccessTokenRequest {
 	departmentId: number;
 }
+
+export interface StatusResponse {
+	status: string;
+}
