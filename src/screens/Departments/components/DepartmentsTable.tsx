@@ -4,9 +4,13 @@ import { DepartamentResponse } from 'src/services/response';
 
 interface IDepartmentsTable {
 	departments: DepartamentResponse[];
+	getDepartment: (departmentId: number) => void;
 }
 
-export const DepartmentsTable = ({ departments }: IDepartmentsTable): JSX.Element => {
+export const DepartmentsTable = ({
+	departments,
+	getDepartment,
+}: IDepartmentsTable): JSX.Element => {
 	return (
 		<Table hoverable={true} className='w-screen max-w-5xl' striped={true}>
 			<Table.Head>
@@ -25,7 +29,7 @@ export const DepartmentsTable = ({ departments }: IDepartmentsTable): JSX.Elemen
 							</Table.Cell>
 							<Table.Cell>{item.ativo ? 'Ativo' : 'Inativo'}</Table.Cell>
 							<Table.Cell>
-								<Button color={'warning'} size='xs'>
+								<Button color={'warning'} size='xs' onClick={(): void => getDepartment(item.id)}>
 									<Icon icon='mdi:pencil' className='text-white text-[20px] ' />
 								</Button>
 							</Table.Cell>

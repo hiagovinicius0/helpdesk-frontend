@@ -39,3 +39,13 @@ export interface QueryDepartmentRequest extends AccessTokenRequest {
 export interface StatusResponse {
 	status: string;
 }
+
+export interface BodyCreateDepartmentRequest extends AccessTokenRequest {
+	nome: string;
+	icone: string;
+}
+
+export interface BodyUpdateDepartmentRequest extends BodyCreateDepartmentRequest {
+	departmentId: number;
+	ativo: boolean;
+}

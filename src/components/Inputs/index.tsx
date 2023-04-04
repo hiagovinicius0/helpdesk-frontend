@@ -2,6 +2,7 @@ export enum InputType {
 	TEXT = 'TEXT',
 	TEXTAREA = 'TEXTAREA',
 	SELECT = 'SELECT',
+	CHECKBOX = 'CHECKBOX',
 }
 
 interface IOption {
@@ -72,6 +73,18 @@ export const Input = ({ span, type, selectOptions, value, setValue }: IInputs): 
 					);
 				})}
 			</select>
+		);
+	}
+
+	if (type === InputType.CHECKBOX) {
+		input = (
+			<>
+				<input
+					type='checkbox'
+					checked={Boolean(value === 'true' ? true : false)}
+					onChange={(): void => setValue(value.toString())}
+				></input>
+			</>
 		);
 	}
 
